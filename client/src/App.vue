@@ -1,8 +1,7 @@
 <template>
-<div>woo!</div>
+  <div>woo!</div>
 </template>
 
 <script>
-export default {
-}
+export default {}
 </script>
