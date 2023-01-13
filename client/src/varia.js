@@ -68,7 +68,7 @@ export const extractVariaPalettes = (varia.extractPalettes = (ctx) => {
   const width = 8 * 15
   const height = 8 * 7
   const image_data = ctx.getImageData(x, y, width, height)
-  return varia.palette_names.map((name, y_index) => ({
+  const palettes = varia.palette_names.map((name, y_index) => ({
     name,
     colors: range(15).map((x_index) => {
       const offset = y_index * width * 8 + x_index * 8
@@ -76,10 +76,18 @@ export const extractVariaPalettes = (varia.extractPalettes = (ctx) => {
       return {
         name: `${name}__${x_index}`,
         value,
+        hash: value.toString(),
         empty: value[4] === 0,
       }
     }),
   }))
+  const og = palettes[0].colors
+  palettes.slice(1, 4).forEach((p) =>
+    p.colors.forEach((c, i) => {
+      c.locked = c.hash === og[i].hash
+    }),
+  )
+  return palettes
 })
 
 export default varia

@@ -2,6 +2,10 @@
 
 .swatch-list {
   @apply flex items-center;
+  &__swatch {
+    @apply flex items-center justify-center text-white;
+    text-shadow: 0 0 2px black;
+  }
 }
 
 img {

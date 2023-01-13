@@ -6,6 +6,7 @@ export default () => {
   const initial = {
     data_url: null,
     filename: null,
+    overrides: {},
   }
   const storage = ReactiveLocalStorage({ LS_KEY, initial })
   return storage
