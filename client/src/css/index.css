@@ -1,0 +1,5 @@
+@import './tailwind.css';
+
+.swatch-list {
+  @apply flex items-center;
+}
