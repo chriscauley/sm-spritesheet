@@ -3,3 +3,7 @@
 .swatch-list {
   @apply flex items-center;
 }
+
+img {
+  max-width: unset;
+}

@@ -5,19 +5,22 @@
       <div v-for="color in palette.colors" :key="color.name" :style="css.swatch(color)" />
       <div>{{ palette.name }}</div>
     </div>
-    <img ref="img" :src="spritesheet.data_url" @load="imageLoaded" />
+    <div class="relative">
+      <img ref="img" :src="spritesheet.data_url" @load="imageLoaded" />
+      <div v-for="region in regions" :key="region.id" v-bind="region" />
+    </div>
   </div>
 </template>
 
 <script>
-import { extractVariaPalettes } from '@/utils'
+import { extractVariaPalettes, varia_regions } from '@/utils'
 
 const css = {
   swatch: ({ value }) => ({
-    width: "32px",
-    height: "32px",
-    backgroundColor: console.log(value) || `rgba(${value})`,
-  })
+    width: '32px',
+    height: '32px',
+    backgroundColor: `rgba(${value})`,
+  }),
 }
 
 export default {
@@ -29,6 +32,20 @@ export default {
     spritesheet() {
       return this.$store.local.state
     },
+    regions() {
+      return Object.entries(varia_regions).map(([name, [left, top, width, height]]) => ({
+        style: {
+          position: 'absolute',
+          background: 'rgba(255, 0, 0, 0.5)',
+          top: `${top}px`,
+          left: `${left}px`,
+          width: `${width}px`,
+          height: `${height}px`,
+        },
+        id: name,
+        title: name,
+      }))
+    },
   },
   methods: {
     imageLoaded() {
@@ -39,8 +56,7 @@ export default {
       const ctx = canvas.getContext('2d')
       ctx.drawImage(this.$refs.img, 0, 0)
       this.palettes = extractVariaPalettes(ctx)
-      console.log(this.palettes)
-    }
-  }
+    },
+  },
 }
 </script>
