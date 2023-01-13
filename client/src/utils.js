@@ -71,25 +71,3 @@ export const extractPalette = (ctx, { x, y, width, height, skips = varia_skips }
   }
   return Object.values(colors).filter((swatch) => !skips.includes(swatch.hash))
 }
-
-export const extractVariaPalettes = (ctx) => {
-  const x = 378
-  const y = 1
-  const width = 8 * 15
-  const height = 8 * 7
-  const image_data = ctx.getImageData(x, y, width, height)
-  return varia_palette_names.map((name, y_index) => {
-    return {
-      name,
-      colors: range(15).map((x_index) => {
-        const offset = y_index * width * 8 + x_index * 8
-        const value = Array.from(image_data.data.slice(4 * offset, 4 * (offset + 1)))
-        return {
-          name: `${name}__${x_index}`,
-          value,
-          empty: value[4] === 0,
-        }
-      }),
-    }
-  })
-}

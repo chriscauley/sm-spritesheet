@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { extractVariaPalettes, varia_regions } from '@/utils'
+import varia from '@/varia'
 
 const css = {
   swatch: ({ value }) => ({
@@ -33,7 +33,7 @@ export default {
       return this.$store.local.state
     },
     regions() {
-      return Object.entries(varia_regions).map(([name, [left, top, width, height]]) => ({
+      return Object.entries(varia.regions).map(([name, [left, top, width, height]]) => ({
         style: {
           position: 'absolute',
           background: 'rgba(255, 0, 0, 0.5)',
@@ -55,7 +55,7 @@ export default {
       canvas.height = height
       const ctx = canvas.getContext('2d')
       ctx.drawImage(this.$refs.img, 0, 0)
-      this.palettes = extractVariaPalettes(ctx)
+      this.palettes = varia.extractPalettes(ctx)
     },
   },
 }
