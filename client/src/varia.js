@@ -62,7 +62,7 @@ const varia = {
   },
 }
 
-export const extractVariaPalettes = (varia.extractPalettes = (ctx) => {
+varia.extractPalettes = (ctx) => {
   const x = 378
   const y = 1
   const width = 8 * 15
@@ -74,10 +74,12 @@ export const extractVariaPalettes = (varia.extractPalettes = (ctx) => {
       const offset = y_index * width * 8 + x_index * 8
       const value = Array.from(image_data.data.slice(4 * offset, 4 * (offset + 1)))
       return {
-        name: `${name}__${x_index}`,
+        id: `${name}__${x_index}`,
+        index: x_index,
         value,
         hash: value.toString(),
         empty: value[4] === 0,
+        palette: name,
       }
     }),
   }))
@@ -88,6 +90,6 @@ export const extractVariaPalettes = (varia.extractPalettes = (ctx) => {
     }),
   )
   return palettes
-})
+}
 
 export default varia

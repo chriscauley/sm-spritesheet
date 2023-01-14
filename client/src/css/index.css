@@ -3,11 +3,13 @@
 .swatch-list {
   @apply flex items-center;
   &__swatch {
-    @apply flex items-center justify-center text-white;
+    @apply flex items-center justify-center text-white h-8 w-8;
     text-shadow: 0 0 2px black;
   }
 }
 
-img {
+img.-full {
+  image-rendering: pixelated;
   max-width: unset;
+  min-width: 100%;
 }
