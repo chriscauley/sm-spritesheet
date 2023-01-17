@@ -6,6 +6,16 @@
     @apply flex items-center justify-center text-white h-8 w-8;
     text-shadow: 0 0 2px black;
   }
+  .palette-actions {
+    @apply items-center justify-center gap-4 pl-4;
+    display: none;
+    .fa {
+      @apply cursor-pointer;
+    }
+  }
+  &:hover .palette-actions {
+    @apply flex;
+  }
 }
 
 img.-full {
@@ -15,6 +25,10 @@ img.-full {
 }
 
 .invisible-file-input {
+  left: -1000px;
   opacity: 0;
   pointer-events:none;
+  position: absolute;
+  top: -1000px
 }
+
