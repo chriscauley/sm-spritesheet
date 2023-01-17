@@ -1,12 +1,9 @@
 import { ReactiveLocalStorage } from '@unrest/vue-storage'
 
 import varia from '@/varia'
+import vec4 from '@/vec4'
 
 const LS_KEY = 'LOCAL_STORE'
-
-const vec4 = {
-  equal: (a, b) => a[0] === b[0] && a[1] === b[1] && a[2] === b[2] && a[3] === b[3],
-}
 
 export default () => {
   const initial = {

@@ -18,3 +18,15 @@ export const extractPalette = (ctx, { x, y, width, height, skips = [] }) => {
   }
   return Object.values(colors).filter((swatch) => !skips.includes(swatch.hash))
 }
+
+export const saveFile = (text, filename) => {
+  if (typeof text === 'object') {
+    text = JSON.stringify(text)
+  }
+  const anchor = document.createElement('a')
+  anchor.href = 'data:' + 'text/plain' + 'charset=utf-8,' + escape(text)
+  anchor.setAttribute('download', filename)
+  document.body.appendChild(anchor)
+  anchor.click()
+  document.body.removeChild(anchor)
+}

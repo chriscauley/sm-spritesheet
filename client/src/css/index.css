@@ -13,3 +13,8 @@ img.-full {
   max-width: unset;
   min-width: 100%;
 }
+
+.invisible-file-input {
+  opacity: 0;
+  pointer-events:none;
+}

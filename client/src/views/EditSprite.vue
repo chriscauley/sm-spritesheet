@@ -1,6 +1,11 @@
 <template>
   <div>
-    <div>{{ spritesheet.filename }}</div>
+    <div>
+      {{ spritesheet.filename }}
+      <div class="spritesheet-actions">
+        <i class="fa fa-save" @click="saveSpritesheet" />
+      </div>
+    </div>
     <div v-for="palette in palettes" :key="palette.name" class="swatch-list">
       <color-swatch
         v-for="color in palette.colors"
@@ -8,6 +13,16 @@
         :color="color"
         :palettes="palettes"
       />
+      <div class="palette-actions">
+        <i class="fa fa-download" @click="savePalette(palette)" />
+        <label class="fa fa-upload">
+          <input
+            type="file"
+            class="invisible-file-input"
+            @change="(e) => loadPalette(e, palette)"
+          />
+        </label>
+      </div>
     </div>
     <div v-if="selected_region && ready">
       <div class="flex gap-2 mb-4">
@@ -31,6 +46,7 @@
 <script>
 import ColorSwatch from '@/components/ColorSwatch.vue'
 import varia from '@/varia'
+import { saveFile } from '@/utils'
 
 const getPixelMap = (image_data) => {
   const pixel_map = {}
@@ -117,6 +133,37 @@ export default {
     },
     selectRegion(region) {
       this.$store.local.save({ selected_region: region })
+    },
+    saveSpritesheet() {
+      const name = this.spritesheet.filename.replace(/png$/, 'json')
+      saveFile(JSON.stringify(this.$store.local.state, null, 2), name)
+    },
+    savePalette(palette) {
+      let filename = window.prompt('Enter Filename')
+      if (filename) {
+        if (!filename.endsWith('json')) {
+          filename += '.json'
+        }
+        const colors = palette.colors.map((c) => this.$store.local.resolveColor(c, this.palettes))
+        saveFile(colors, filename)
+      }
+    },
+    loadPalette(event, palette) {
+      const file = event.target.files?.[0]
+      if (!file) {
+        return
+      }
+      var reader = new FileReader()
+      reader.onload = () => {
+        const new_palette = JSON.parse(reader.result)
+        // TODO copypasta from ColorSwatch.vue
+        const { overrides } = this.$store.local.state
+        palette.colors.forEach((color, index) => {
+          overrides[color.id] = new_palette[index]
+        })
+        this.$store.local.save(overrides)
+      }
+      reader.readAsText(file)
     },
   },
 }
