@@ -1,5 +1,10 @@
 <template>
   <div v-if="ready && selected_region">
+    <div v-if="suits" class="btn-group">
+      <button v-for="suit in suits" :key="suit" :class="css.suit(suit)" @click="selected_suit=suit">
+        {{ suit }}
+      </button>
+    </div>
     <div class="flex gap-2 mb-4">
       {{ selected_region.id }}
       <div @click="selectRegion(null)" class="link">back</div>
@@ -30,9 +35,19 @@ const getPixelMap = (image_data) => {
 
 export default {
   data() {
-    return { ready: false }
+    const css = {
+      suit: name => `btn -${this.selected_suit === name ? "primary" : "secondary"}`
+    }
+    return { ready: false, selected_suit: 'power-suit', css }
   },
   computed: {
+    suits() {
+      const { selected_region } = this
+      if (!selected_region || varia.special_regions[selected_region]) {
+        return null
+      }
+      return ['power-suit', 'varia-suit', 'gravity-suit']
+    },
     selected_region() {
       return this.$store.local.state.selected_region
     },
@@ -65,7 +80,9 @@ export default {
       const image_data = ctx.getImageData(0, 0, width, height)
       const pixel_map = getPixelMap(image_data)
       const { palettes } = this.$store.app.state
-      const overrides = this.$store.local.getOverrides(this.selected_region.id, palettes)
+      const { id } = this.selected_region
+      const overrides = this.$store.local.getOverrides(id, palettes, this.selected_suit)
+      console.log(overrides)
       overrides.forEach(([color1, color2]) => {
         pixel_map[color1]?.forEach((index) => {
           image_data.data[4 * index] = color2[0]

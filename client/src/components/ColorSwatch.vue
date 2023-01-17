@@ -6,7 +6,9 @@
     <template #content>
       <div class="dropdown-items p-2" @click.stop>
         {{ color.palette }} #{{ color.index }}
-        <div v-if="lockable">lockable</div>
+        <div v-if="lockable">
+          lockable
+        </div>
         <input type="color" :value="override_hex" @change="changeColor" />
         <button v-if="can_clear" @click="clear" class="btn -danger">clear</button>
       </div>
@@ -18,15 +20,15 @@
 export default {
   props: {
     color: Object,
-    palettes: Array,
   },
   computed: {
     can_clear() {
-      const { locked, value } = this.color
-      return !locked && this.override.toString() !== value.toString()
+      const { value } = this.color
+      return this.override.toString() !== value.toString()
     },
     override() {
-      return this.$store.local.resolveColor(this.color, this.palettes)
+      const { palettes } = this.$store.app.state
+      return this.$store.local.resolveColor(this.color, palettes)
     },
     override_hex() {
       return (

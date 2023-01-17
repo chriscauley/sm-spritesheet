@@ -1,6 +1,7 @@
 import local from './local'
+import app from './app'
 
-const modules = { local }
+const modules = { local, app }
 
 const store = {
   install(app) {

@@ -25,10 +25,18 @@ export default () => {
   storage.getOverrides = (region_id, palettes, suit_name = 'power-suit') => {
     const palette_name = varia.special_regions[region_id] || suit_name
     const palette = palettes.find((p) => p.name === palette_name)
-    const overrides = palette.colors.map((color) => [
-      color.value,
-      storage.resolveColor(color, palettes),
-    ])
+    const palette_index = palettes.indexOf(palette)
+    const overrides = palette.colors.map((color, index) => {
+      let { value } = color
+      if (palette_index < 4) {
+        // suits and death
+        value = palettes[0].colors[index].value
+      }
+      return [
+        value,
+        storage.resolveColor(color, palettes),
+      ]
+    })
     return overrides.filter((o) => !vec4.equal(o[0], o[1]))
   }
 
