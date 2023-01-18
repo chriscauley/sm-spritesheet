@@ -32,3 +32,36 @@ img.-full {
   top: -1000px
 }
 
+.pcr-app .pcr-interaction {
+  .pcr-result {
+    flex-basis: 70%;
+    order: 1;
+  }
+  .pcr-clear {
+    order: 2;
+  }
+  .pcr-type {
+    order: 3
+  }
+}
+
+.pcr-app .pcr-swatches {
+  order: 9;
+  margin: 0.3em 0;
+}
+
+.pickr .pcr-button {
+  display: block;
+  border-radius: 0;
+  &:focus {
+    box-shadow: unset;
+    outline: unset;
+  }
+  &:before {
+    border-radius: 0;
+  }
+  &:after {
+    background: linear-gradient(135deg, var(--base-color) 50%, var(--selected-color) 50%);
+    border-radius: 0;
+  }
+}

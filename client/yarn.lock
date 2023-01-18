@@ -1151,6 +1151,14 @@
   resolved "https://registry.yarnpkg.com/@sideway/pinpoint/-/pinpoint-2.0.0.tgz#cff8ffadc372ad29fd3f78277aeb29e632cc70df"
   integrity sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ==
 
+"@simonwep/pickr@^1.8.2":
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/@simonwep/pickr/-/pickr-1.8.2.tgz#96dc86675940d7cad63d69c22083dd1cbb9797cb"
+  integrity sha512-/l5w8BIkrpP6n1xsetx9MWPWlU6OblN5YgZZphxan0Tq4BByTCETL6lyIeY8lagalS2Nbt4F2W034KHLIiunKA==
+  dependencies:
+    core-js "^3.15.1"
+    nanopop "^2.1.0"
+
 "@soda/friendly-errors-webpack-plugin@^1.8.0":
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/@soda/friendly-errors-webpack-plugin/-/friendly-errors-webpack-plugin-1.8.1.tgz#4d4fbb1108993aaa362116247c3d18188a2c6c85"
@@ -2599,7 +2607,7 @@ core-js-compat@^3.25.1, core-js-compat@^3.8.3:
   dependencies:
     browserslist "^4.21.4"
 
-core-js@^3.23.1, core-js@^3.8.3:
+core-js@^3.15.1, core-js@^3.23.1, core-js@^3.8.3:
   version "3.27.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.27.1.tgz#23cc909b315a6bb4e418bf40a52758af2103ba46"
   integrity sha512-GutwJLBChfGCpwwhbYoqfv03LAfmiz7e7D/BNxzeMxwQf10GRSzqiOjx7AmtEk+heiD/JWmBuyBPgFtx0Sg1ww==
@@ -4563,6 +4571,11 @@ nanoid@^3.3.4:
   version "3.3.4"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.4.tgz#730b67e3cd09e2deacf03c027c81c9d9dbc5e8ab"
   integrity sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==
+
+nanopop@^2.1.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/nanopop/-/nanopop-2.2.0.tgz#bd1c25588a7beaf68865bc2df19db4c58c77dcc9"
+  integrity sha512-E9JaHcxh3ere8/BEZHAcnuD10RluTSPyTToBvoFWS9/7DcCx6gyKjbn7M7Bx7E1veCxCuY1iO6h4+gdAf1j73Q==
 
 natural-compare@^1.4.0:
   version "1.4.0"

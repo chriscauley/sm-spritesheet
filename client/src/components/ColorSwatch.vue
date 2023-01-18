@@ -1,69 +1,61 @@
 <template>
-  <unrest-dropdown>
-    <div :style="style" :title="color.name" class="swatch-list__swatch">
-      <i v-if="color.locked" class="fa fa-lock" />
-    </div>
-    <template #content>
-      <div class="dropdown-items p-2" @click.stop>
-        {{ color.palette }} #{{ color.index }}
-        <div v-if="lockable">lockable</div>
-        <input type="color" :value="override_hex" @change="changeColor" />
-        <button v-if="can_clear" @click="clear" class="btn -danger">clear</button>
-      </div>
-    </template>
-  </unrest-dropdown>
+  <div :style="style">
+    <pickr-input v-model="modelValue" :options="options" />
+  </div>
 </template>
 
 <script>
+import { debounce } from 'lodash'
+
 export default {
   props: {
     color: Object,
   },
   computed: {
-    can_clear() {
-      const { value } = this.color
-      return this.override.toString() !== value.toString()
-    },
-    override() {
-      const { palettes } = this.$store.app.state
-      return this.$store.local.resolveColor(this.color, palettes)
-    },
-    override_hex() {
-      return (
-        '#' +
-        this.override
-          .slice(0, 3)
-          .map((i) => i.toString(16).padStart(2, '0'))
-          .join('')
-      )
-    },
-    lockable() {
-      return ['varia-suit', 'gravity-suit', 'death'].includes(this.color.palette)
+    modelValue: {
+      get() {
+        const { palettes } = this.$store.app.state
+        const value = this.$store.local.resolveColor(this.color, palettes).slice()
+        value[3] = value[3] / 255
+        return `rgba(${value.join(',')})`
+      },
+      // this function is throttled to prevent over-rendering of the preview
+      set: debounce(function (value) {
+        if (value) {
+          value = value.slice(5, -1).split(',').map(Number)
+          value[3] = value[3] * 255
+        }
+        const { overrides } = this.$store.local.state
+        overrides[this.color.id] = value
+        this.$store.local.save(overrides)
+      }, 100),
     },
     style() {
       const { value } = this.color
-      const { override } = this
+      const { palettes } = this.$store.app.state
+      const override = this.$store.local.resolveColor(this.color, palettes)
       return {
-        backgroundImage: `linear-gradient(135deg, rgba(${value}) 50%, rgba(${override}) 50%)`,
+        '--base-color': `rgba(${value})`,
+        '--selected-color': `rgba(${override})`,
       }
     },
-  },
-  methods: {
-    changeColor(e) {
-      const value = e.target.value.slice(1)
-      const color = [0, 1, 2].map((i) => parseInt(value.slice(i * 2, (i + 1) * 2), 16))
-      color.push(255)
-      this.save(color)
-      document.body.click() // remove focus
-    },
-    save(value) {
-      // TODO move to storage
-      const { overrides } = this.$store.local.state
-      overrides[this.color.id] = value
-      this.$store.local.save(overrides)
-    },
-    clear() {
-      this.save(null)
+    options() {
+      return {
+        defaultRepresentation: 'RGBA',
+        components: {
+          preview: true,
+          opacity: true,
+          hue: true,
+          interaction: {
+            hex: true,
+            rgba: true,
+            hsla: true,
+            hsva: true,
+            input: true,
+            clear: true,
+          },
+        },
+      }
     },
   },
 }
