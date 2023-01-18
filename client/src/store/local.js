@@ -32,10 +32,7 @@ export default () => {
         // suits and death
         value = palettes[0].colors[index].value
       }
-      return [
-        value,
-        storage.resolveColor(color, palettes),
-      ]
+      return [value, storage.resolveColor(color, palettes)]
     })
     return overrides.filter((o) => !vec4.equal(o[0], o[1]))
   }

@@ -6,9 +6,7 @@
     <template #content>
       <div class="dropdown-items p-2" @click.stop>
         {{ color.palette }} #{{ color.index }}
-        <div v-if="lockable">
-          lockable
-        </div>
+        <div v-if="lockable">lockable</div>
         <input type="color" :value="override_hex" @change="changeColor" />
         <button v-if="can_clear" @click="clear" class="btn -danger">clear</button>
       </div>

@@ -1,7 +1,12 @@
 <template>
   <div v-if="ready && selected_region">
     <div v-if="suits" class="btn-group">
-      <button v-for="suit in suits" :key="suit" :class="css.suit(suit)" @click="selected_suit=suit">
+      <button
+        v-for="suit in suits"
+        :key="suit"
+        :class="css.suit(suit)"
+        @click="selected_suit = suit"
+      >
         {{ suit }}
       </button>
     </div>
@@ -19,24 +24,12 @@
 
 <script>
 import varia from '@/varia'
-
-const getPixelMap = (image_data) => {
-  const pixel_map = {}
-  for (let i = 0; i < image_data.data.length; i++) {
-    const color = image_data.data.slice(i * 4, (i + 1) * 4)
-    const hash = color.toString()
-    if (!pixel_map[hash]) {
-      pixel_map[hash] = []
-    }
-    pixel_map[hash].push(i)
-  }
-  return pixel_map
-}
+import { replaceColors } from '@/utils'
 
 export default {
   data() {
     const css = {
-      suit: name => `btn -${this.selected_suit === name ? "primary" : "secondary"}`
+      suit: (name) => `btn -${this.selected_suit === name ? 'primary' : 'secondary'}`,
     }
     return { ready: false, selected_suit: 'power-suit', css }
   },
@@ -74,24 +67,15 @@ export default {
       canvas.width = width
       canvas.height = height
       const ctx = canvas.getContext('2d')
-      ctx.imageSmoothingEnabled = false
       ctx.drawImage(this.$refs.img, -x, -y)
 
       const image_data = ctx.getImageData(0, 0, width, height)
-      const pixel_map = getPixelMap(image_data)
       const { palettes } = this.$store.app.state
       const { id } = this.selected_region
       const overrides = this.$store.local.getOverrides(id, palettes, this.selected_suit)
-      console.log(overrides)
-      overrides.forEach(([color1, color2]) => {
-        pixel_map[color1]?.forEach((index) => {
-          image_data.data[4 * index] = color2[0]
-          image_data.data[4 * index + 1] = color2[1]
-          image_data.data[4 * index + 2] = color2[2]
-          image_data.data[4 * index + 3] = color2[3]
-        })
-      })
+      replaceColors(image_data, overrides)
       ctx.putImageData(image_data, 0, 0)
+
       return canvas.toDataURL()
     },
   },
@@ -104,6 +88,7 @@ export default {
       const ctx = canvas.getContext('2d')
       ctx.drawImage(this.$refs.img, 0, 0)
       this.$store.app.state.palettes = varia.extractPalettes(ctx)
+      this.$store.app.state.img = this.$refs.img
       this.ready = true
     },
     selectRegion(region) {

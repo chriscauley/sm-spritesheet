@@ -30,3 +30,37 @@ export const saveFile = (text, filename) => {
   anchor.click()
   document.body.removeChild(anchor)
 }
+
+export const saveImage = (dataurl, filename) => {
+  const anchor = document.createElement('a')
+  anchor.href = dataurl
+  anchor.setAttribute('download', filename)
+  document.body.appendChild(anchor)
+  anchor.click()
+  document.body.removeChild(anchor)
+}
+
+const getPixelMap = (image_data) => {
+  const pixel_map = {}
+  for (let i = 0; i < image_data.data.length; i++) {
+    const color = image_data.data.slice(i * 4, (i + 1) * 4)
+    const hash = color.toString()
+    if (!pixel_map[hash]) {
+      pixel_map[hash] = []
+    }
+    pixel_map[hash].push(i)
+  }
+  return pixel_map
+}
+
+export const replaceColors = (image_data, overrides) => {
+  const pixel_map = getPixelMap(image_data)
+  overrides.forEach(([color1, color2]) => {
+    pixel_map[color1]?.forEach((index) => {
+      image_data.data[4 * index] = color2[0]
+      image_data.data[4 * index + 1] = color2[1]
+      image_data.data[4 * index + 2] = color2[2]
+      image_data.data[4 * index + 3] = color2[3]
+    })
+  })
+}

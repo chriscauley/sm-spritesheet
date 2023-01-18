@@ -4,6 +4,7 @@
       {{ spritesheet.filename }}
       <div class="spritesheet-actions">
         <i class="fa fa-save" @click="saveSpritesheet" />
+        <i class="fa fa-download" @click="savePng" />
       </div>
     </div>
     <div v-for="palette in $store.app.state.palettes" :key="palette.name" class="swatch-list">
@@ -26,7 +27,8 @@
 
 <script>
 import ColorSwatch from '@/components/ColorSwatch.vue'
-import { saveFile } from '@/utils'
+import { saveFile, saveImage, replaceColors } from '@/utils'
+import varia from '@/varia'
 
 import PreviewSprite from './PreviewSprite.vue'
 
@@ -51,6 +53,25 @@ export default {
     },
   },
   methods: {
+    savePng() {
+      const { img } = this.$store.app.state
+      const { width, height } = img
+      const canvas = document.createElement('canvas')
+      canvas.width = width
+      canvas.height = height
+      const ctx = canvas.getContext('2d', { willReadFrequently: true })
+      ctx.drawImage(img, 0, 0)
+      const { palettes } = this.$store.app.state
+      Object.entries(varia.regions).forEach(([region_id, [x, y, width, height]]) => {
+        const image_data = ctx.getImageData(x, y, width, height)
+        const overrides = this.$store.local.getOverrides(region_id, palettes, this.selected_suit)
+        // TODO actually swapping the colors is very slow and needs to be done server side
+        replaceColors(image_data, overrides)
+        ctx.putImageData(image_data, x, y)
+      })
+      varia.drawPalettes(ctx, palettes, this.$store.local.state.overrides)
+      saveImage(canvas.toDataURL(), 'out.png')
+    },
     saveSpritesheet() {
       const name = this.spritesheet.filename.replace(/png$/, 'json')
       saveFile(JSON.stringify(this.$store.local.state, null, 2), name)

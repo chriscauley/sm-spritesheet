@@ -92,4 +92,17 @@ varia.extractPalettes = (ctx) => {
   return palettes
 }
 
+varia.drawPalettes = (ctx, palettes, overrides) => {
+  const x = 378
+  const y = 1
+  palettes.forEach((palette, y_index) => {
+    palette.colors.forEach((color, x_index) => {
+      if (overrides[color.id]) {
+        ctx.fillStyle = `rgba(${overrides[color.id].join(',')})`
+        ctx.fillRect(x + x_index * 8, y + y_index * 8, 8, 8)
+      }
+    })
+  })
+}
+
 export default varia
