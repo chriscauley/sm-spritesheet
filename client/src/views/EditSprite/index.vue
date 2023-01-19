@@ -22,6 +22,7 @@
       </div>
     </div>
     <preview-sprite />
+    <loading-modal :tasks="tasks" @done="tasks = null" />
   </div>
 </template>
 
@@ -31,6 +32,7 @@ import { saveFile, saveImage, replaceColors } from '@/utils'
 import varia from '@/varia'
 
 import PreviewSprite from './PreviewSprite.vue'
+import LoadingModal from './LoadingModal.vue'
 
 const css = {
   swatch: ({ value }) => ({
@@ -43,9 +45,9 @@ const css = {
 export default {
   name: 'EditSprite',
   __route: { path: '/edit-sprite/' },
-  components: { ColorSwatch, PreviewSprite },
+  components: { ColorSwatch, LoadingModal, PreviewSprite },
   data() {
-    return { css, ready: null }
+    return { css, ready: null, tasks: null }
   },
   computed: {
     spritesheet() {
@@ -62,15 +64,20 @@ export default {
       const ctx = canvas.getContext('2d', { willReadFrequently: true })
       ctx.drawImage(img, 0, 0)
       const { palettes } = this.$store.app.state
+      this.tasks = []
       Object.entries(varia.regions).forEach(([region_id, [x, y, width, height]]) => {
-        const image_data = ctx.getImageData(x, y, width, height)
-        const overrides = this.$store.local.getOverrides(region_id, palettes, this.selected_suit)
-        // TODO actually swapping the colors is very slow and needs to be done server side
-        replaceColors(image_data, overrides)
-        ctx.putImageData(image_data, x, y)
+        this.tasks.push(() => {
+          const image_data = ctx.getImageData(x, y, width, height)
+          const overrides = this.$store.local.getOverrides(region_id, palettes, this.selected_suit)
+          // TODO actually swapping the colors is very slow and needs to be done server side
+          replaceColors(image_data, overrides)
+          ctx.putImageData(image_data, x, y)
+        })
       })
-      varia.drawPalettes(ctx, palettes, this.$store.local.state.overrides)
-      saveImage(canvas.toDataURL(), 'out.png')
+      this.tasks.push(() => {
+        varia.drawPalettes(ctx, palettes, this.$store.local.state.overrides)
+        saveImage(canvas.toDataURL(), 'out.png')
+      })
     },
     saveSpritesheet() {
       const name = this.spritesheet.filename.replace(/png$/, 'json')

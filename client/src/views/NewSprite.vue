@@ -1,10 +1,6 @@
 <template>
   <div>
     <input @change="change" type="file" />
-    <template v-if="src">
-      <img :src="src" @load="imageLoaded" />
-      {{ src.length }}
-    </template>
   </div>
 </template>
 
@@ -12,9 +8,6 @@
 export default {
   __route: {
     path: '/new-sprite/',
-  },
-  data() {
-    return { src: null }
   },
   methods: {
     change(event) {
