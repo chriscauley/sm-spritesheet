@@ -17,7 +17,7 @@
     <img :src="region_src" class="-full" />
   </div>
   <div v-show="!selected_region" class="relative">
-    <img ref="img" :src="spritesheet.data_url" @load="imageLoaded" />
+    <img ref="img" :src="`${spritesheet.folder_url}spritesheet.png`" @load="imageLoaded" />
     <div v-for="region in regions" :key="region.id" v-bind="region" @click="selectRegion(region)" />
   </div>
 </template>
@@ -27,6 +27,9 @@ import varia from '@/varia'
 import { replaceColors } from '@/utils'
 
 export default {
+  props: {
+    spritesheet: Object,
+  },
   data() {
     const css = {
       suit: (name) => `btn -${this.selected_suit === name ? 'primary' : 'secondary'}`,
@@ -43,9 +46,6 @@ export default {
     },
     selected_region() {
       return this.$store.local.state.selected_region
-    },
-    spritesheet() {
-      return this.$store.local.state
     },
     regions() {
       return Object.entries(varia.regions).map(([name, [left, top, width, height]]) => ({

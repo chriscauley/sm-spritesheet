@@ -68,3 +68,22 @@ img.-full {
 
 .loading-modal .modal-content {
 }
+
+.sprite-card__list {
+  @apply flex flex-wrap gap-2;
+}
+
+.sprite-card {
+  @apply bg-gray-100 border p-2 rounded-lg;
+  &:hover {
+    @apply bg-gray-300
+  }
+  &__image {
+    image-rendering: pixelated;
+    width: 150px;
+  }
+  &__name {
+    max-width: 150px;
+    text-align: center;
+  }
+}

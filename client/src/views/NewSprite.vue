@@ -1,13 +1,31 @@
 <template>
   <div>
     <input @change="change" type="file" />
+    <div class="sprite-card__list">
+      <router-link v-for="sprite in sprites" :key="sprite.name" :to="sprite.to" class="sprite-card">
+        <img class="sprite-card__image" :src="`${sprite.folder_url}thumbnail.png`" />
+        <div class="sprite-card__name">{{ sprite.display }}</div>
+      </router-link>
+    </div>
   </div>
 </template>
 
 <script>
+import { startCase } from 'lodash'
+
 export default {
   __route: {
-    path: '/new-sprite/',
+    path: '/app/new-sprite',
+  },
+  computed: {
+    sprites() {
+      const { data } = this.$store.spritesheet.state
+      return Object.values(data || {}).map((sprite) => ({
+        to: `/app/edit-sprite/${sprite.name}`,
+        display: startCase(sprite.name),
+        ...sprite,
+      }))
+    },
   },
   methods: {
     change(event) {

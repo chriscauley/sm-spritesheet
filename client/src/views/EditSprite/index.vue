@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div v-if="spritesheet">
     <div>
-      {{ spritesheet.filename }}
+      {{ spritesheet.display }}
       <div class="spritesheet-actions">
         <i class="fa fa-save" @click="saveSpritesheet" />
         <i class="fa fa-download" @click="savePng" />
@@ -21,7 +21,7 @@
         {{ palette.name }}
       </div>
     </div>
-    <preview-sprite />
+    <preview-sprite :spritesheet="spritesheet" />
     <loading-modal :tasks="tasks" @done="tasks = null" />
   </div>
 </template>
@@ -44,14 +44,16 @@ const css = {
 
 export default {
   name: 'EditSprite',
-  __route: { path: '/edit-sprite/' },
+  __route: { path: '/app/edit-sprite/:spritesheet_name' },
   components: { ColorSwatch, LoadingModal, PreviewSprite },
   data() {
     return { css, ready: null, tasks: null }
   },
   computed: {
     spritesheet() {
-      return this.$store.local.state
+      const { spritesheet_name } = this.$route.params
+      const { data } = this.$store.spritesheet.state
+      return data && data[spritesheet_name]
     },
   },
   methods: {
@@ -80,7 +82,7 @@ export default {
       })
     },
     saveSpritesheet() {
-      const name = this.spritesheet.filename.replace(/png$/, 'json')
+      const name = this.spritesheet.name + '.json'
       saveFile(JSON.stringify(this.$store.local.state, null, 2), name)
     },
     savePalette(palette) {

@@ -16,7 +16,7 @@ const prepRoute = (to) => ({
 
 export default {
   __route: {
-    path: '/',
+    path: '/app',
   },
   data() {
     return {

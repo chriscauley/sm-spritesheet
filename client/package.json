@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "eslint \"src/**/*\""
+    "lint": "eslint \"src/**/*\"",
+    "watch": "vue-cli-service build --watch --dest ../server/dist"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.6",
