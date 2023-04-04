@@ -1,2 +1,7 @@
 node_modules
-__pycached__
+
+__pycache__
+server/.media
+server/.static
+server/main/.secret_key
+server/main/settings/local.py

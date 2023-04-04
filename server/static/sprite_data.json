@@ -1,0 +1,464 @@
+{
+  "mario": {
+    "folder": ".media/data/spritesheets/mario",
+    "folder_url": "/media/data/spritesheets/mario/",
+    "type": "sm:spritesheet",
+    "name": "mario"
+  },
+  "buffed_kirby": {
+    "folder": ".media/data/spritesheets/buffed_kirby",
+    "folder_url": "/media/data/spritesheets/buffed_kirby/",
+    "type": "sm:spritesheet",
+    "name": "buffed_kirby"
+  },
+  "megaman": {
+    "folder": ".media/data/spritesheets/megaman",
+    "folder_url": "/media/data/spritesheets/megaman/",
+    "type": "sm:spritesheet",
+    "name": "megaman"
+  },
+  "kirby": {
+    "folder": ".media/data/spritesheets/kirby",
+    "folder_url": "/media/data/spritesheets/kirby/",
+    "type": "sm:spritesheet",
+    "name": "kirby"
+  },
+  "invisible": {
+    "folder": ".media/data/spritesheets/invisible",
+    "folder_url": "/media/data/spritesheets/invisible/",
+    "type": "sm:spritesheet",
+    "name": "invisible"
+  },
+  "hack_redesign": {
+    "folder": ".media/data/spritesheets/hack_redesign",
+    "folder_url": "/media/data/spritesheets/hack_redesign/",
+    "type": "sm:spritesheet",
+    "name": "hack_redesign"
+  },
+  "sonic": {
+    "folder": ".media/data/spritesheets/sonic",
+    "folder_url": "/media/data/spritesheets/sonic/",
+    "type": "sm:spritesheet",
+    "name": "sonic"
+  },
+  "super_controid": {
+    "folder": ".media/data/spritesheets/super_controid",
+    "folder_url": "/media/data/spritesheets/super_controid/",
+    "type": "sm:spritesheet",
+    "name": "super_controid"
+  },
+  "win95_cursor": {
+    "folder": ".media/data/spritesheets/win95_cursor",
+    "folder_url": "/media/data/spritesheets/win95_cursor/",
+    "type": "sm:spritesheet",
+    "name": "win95_cursor"
+  },
+  "ronald_mcdonald": {
+    "folder": ".media/data/spritesheets/ronald_mcdonald",
+    "folder_url": "/media/data/spritesheets/ronald_mcdonald/",
+    "type": "sm:spritesheet",
+    "name": "ronald_mcdonald"
+  },
+  "aroace": {
+    "folder": ".media/data/spritesheets/aroace",
+    "folder_url": "/media/data/spritesheets/aroace/",
+    "type": "sm:spritesheet",
+    "name": "aroace"
+  },
+  "link_2_the_past": {
+    "folder": ".media/data/spritesheets/link_2_the_past",
+    "folder_url": "/media/data/spritesheets/link_2_the_past/",
+    "type": "sm:spritesheet",
+    "name": "link_2_the_past"
+  },
+  "sans": {
+    "folder": ".media/data/spritesheets/sans",
+    "folder_url": "/media/data/spritesheets/sans/",
+    "type": "sm:spritesheet",
+    "name": "sans"
+  },
+  "samus_upside_down": {
+    "folder": ".media/data/spritesheets/samus_upside_down",
+    "folder_url": "/media/data/spritesheets/samus_upside_down/",
+    "type": "sm:spritesheet",
+    "name": "samus_upside_down"
+  },
+  "alucard": {
+    "folder": ".media/data/spritesheets/alucard",
+    "folder_url": "/media/data/spritesheets/alucard/",
+    "type": "sm:spritesheet",
+    "name": "alucard"
+  },
+  "chairdeep": {
+    "folder": ".media/data/spritesheets/chairdeep",
+    "folder_url": "/media/data/spritesheets/chairdeep/",
+    "type": "sm:spritesheet",
+    "name": "chairdeep"
+  },
+  "moonclif": {
+    "folder": ".media/data/spritesheets/moonclif",
+    "folder_url": "/media/data/spritesheets/moonclif/",
+    "type": "sm:spritesheet",
+    "name": "moonclif"
+  },
+  "hack_escape2": {
+    "folder": ".media/data/spritesheets/hack_escape2",
+    "folder_url": "/media/data/spritesheets/hack_escape2/",
+    "type": "sm:spritesheet",
+    "name": "hack_escape2"
+  },
+  "king_graham": {
+    "folder": ".media/data/spritesheets/king_graham",
+    "folder_url": "/media/data/spritesheets/king_graham/",
+    "type": "sm:spritesheet",
+    "name": "king_graham"
+  },
+  "super_duper": {
+    "folder": ".media/data/spritesheets/super_duper",
+    "folder_url": "/media/data/spritesheets/super_duper/",
+    "type": "sm:spritesheet",
+    "name": "super_duper"
+  },
+  "tetris": {
+    "folder": ".media/data/spritesheets/tetris",
+    "folder_url": "/media/data/spritesheets/tetris/",
+    "type": "sm:spritesheet",
+    "name": "tetris"
+  },
+  "wario": {
+    "folder": ".media/data/spritesheets/wario",
+    "folder_url": "/media/data/spritesheets/wario/",
+    "type": "sm:spritesheet",
+    "name": "wario"
+  },
+  "yoshi": {
+    "folder": ".media/data/spritesheets/yoshi",
+    "folder_url": "/media/data/spritesheets/yoshi/",
+    "type": "sm:spritesheet",
+    "name": "yoshi"
+  },
+  "goku": {
+    "folder": ".media/data/spritesheets/goku",
+    "folder_url": "/media/data/spritesheets/goku/",
+    "type": "sm:spritesheet",
+    "name": "goku"
+  },
+  "sprite_can": {
+    "folder": ".media/data/spritesheets/sprite_can",
+    "folder_url": "/media/data/spritesheets/sprite_can/",
+    "type": "sm:spritesheet",
+    "name": "sprite_can"
+  },
+  "cuphead": {
+    "folder": ".media/data/spritesheets/cuphead",
+    "folder_url": "/media/data/spritesheets/cuphead/",
+    "type": "sm:spritesheet",
+    "name": "cuphead"
+  },
+  "mario_8bit": {
+    "folder": ".media/data/spritesheets/mario_8bit",
+    "folder_url": "/media/data/spritesheets/mario_8bit/",
+    "type": "sm:spritesheet",
+    "name": "mario_8bit"
+  },
+  "maria_pollo": {
+    "folder": ".media/data/spritesheets/maria_pollo",
+    "folder_url": "/media/data/spritesheets/maria_pollo/",
+    "type": "sm:spritesheet",
+    "name": "maria_pollo"
+  },
+  "hack_opposition": {
+    "folder": ".media/data/spritesheets/hack_opposition",
+    "folder_url": "/media/data/spritesheets/hack_opposition/",
+    "type": "sm:spritesheet",
+    "name": "hack_opposition"
+  },
+  "bob": {
+    "folder": ".media/data/spritesheets/bob",
+    "folder_url": "/media/data/spritesheets/bob/",
+    "type": "sm:spritesheet",
+    "name": "bob"
+  },
+  "link": {
+    "folder": ".media/data/spritesheets/link",
+    "folder_url": "/media/data/spritesheets/link/",
+    "type": "sm:spritesheet",
+    "name": "link"
+  },
+  "arcana": {
+    "folder": ".media/data/spritesheets/arcana",
+    "folder_url": "/media/data/spritesheets/arcana/",
+    "type": "sm:spritesheet",
+    "name": "arcana"
+  },
+  "shantae": {
+    "folder": ".media/data/spritesheets/shantae",
+    "folder_url": "/media/data/spritesheets/shantae/",
+    "type": "sm:spritesheet",
+    "name": "shantae"
+  },
+  "fusion_orange_varia": {
+    "folder": ".media/data/spritesheets/fusion_orange_varia",
+    "folder_url": "/media/data/spritesheets/fusion_orange_varia/",
+    "type": "sm:spritesheet",
+    "name": "fusion_orange_varia"
+  },
+  "crewmate": {
+    "folder": ".media/data/spritesheets/crewmate",
+    "folder_url": "/media/data/spritesheets/crewmate/",
+    "type": "sm:spritesheet",
+    "name": "crewmate"
+  },
+  "fed_trooper": {
+    "folder": ".media/data/spritesheets/fed_trooper",
+    "folder_url": "/media/data/spritesheets/fed_trooper/",
+    "type": "sm:spritesheet",
+    "name": "fed_trooper"
+  },
+  "inkling_girl": {
+    "folder": ".media/data/spritesheets/inkling_girl",
+    "folder_url": "/media/data/spritesheets/inkling_girl/",
+    "type": "sm:spritesheet",
+    "name": "inkling_girl"
+  },
+  "hack_hyper": {
+    "folder": ".media/data/spritesheets/hack_hyper",
+    "folder_url": "/media/data/spritesheets/hack_hyper/",
+    "type": "sm:spritesheet",
+    "name": "hack_hyper"
+  },
+  "140": {
+    "folder": ".media/data/spritesheets/140",
+    "folder_url": "/media/data/spritesheets/140/",
+    "type": "sm:spritesheet",
+    "name": "140"
+  },
+  "hack_kaizo": {
+    "folder": ".media/data/spritesheets/hack_kaizo",
+    "folder_url": "/media/data/spritesheets/hack_kaizo/",
+    "type": "sm:spritesheet",
+    "name": "hack_kaizo"
+  },
+  "maxim_kischine": {
+    "folder": ".media/data/spritesheets/maxim_kischine",
+    "folder_url": "/media/data/spritesheets/maxim_kischine/",
+    "type": "sm:spritesheet",
+    "name": "maxim_kischine"
+  },
+  "dread": {
+    "folder": ".media/data/spritesheets/dread",
+    "folder_url": "/media/data/spritesheets/dread/",
+    "type": "sm:spritesheet",
+    "name": "dread"
+  },
+  "mini_samus": {
+    "folder": ".media/data/spritesheets/mini_samus",
+    "folder_url": "/media/data/spritesheets/mini_samus/",
+    "type": "sm:spritesheet",
+    "name": "mini_samus"
+  },
+  "hack_szm": {
+    "folder": ".media/data/spritesheets/hack_szm",
+    "folder_url": "/media/data/spritesheets/hack_szm/",
+    "type": "sm:spritesheet",
+    "name": "hack_szm"
+  },
+  "enby": {
+    "folder": ".media/data/spritesheets/enby",
+    "folder_url": "/media/data/spritesheets/enby/",
+    "type": "sm:spritesheet",
+    "name": "enby"
+  },
+  "hack_ancient_chozo": {
+    "folder": ".media/data/spritesheets/hack_ancient_chozo",
+    "folder_url": "/media/data/spritesheets/hack_ancient_chozo/",
+    "type": "sm:spritesheet",
+    "name": "hack_ancient_chozo"
+  },
+  "samus_upside_down_and_backwards": {
+    "folder": ".media/data/spritesheets/samus_upside_down_and_backwards",
+    "folder_url": "/media/data/spritesheets/samus_upside_down_and_backwards/",
+    "type": "sm:spritesheet",
+    "name": "samus_upside_down_and_backwards"
+  },
+  "outline_samus": {
+    "folder": ".media/data/spritesheets/outline_samus",
+    "folder_url": "/media/data/spritesheets/outline_samus/",
+    "type": "sm:spritesheet",
+    "name": "outline_samus"
+  },
+  "bailey": {
+    "folder": ".media/data/spritesheets/bailey",
+    "folder_url": "/media/data/spritesheets/bailey/",
+    "type": "sm:spritesheet",
+    "name": "bailey"
+  },
+  "dark_samus": {
+    "folder": ".media/data/spritesheets/dark_samus",
+    "folder_url": "/media/data/spritesheets/dark_samus/",
+    "type": "sm:spritesheet",
+    "name": "dark_samus"
+  },
+  "knuckles": {
+    "folder": ".media/data/spritesheets/knuckles",
+    "folder_url": "/media/data/spritesheets/knuckles/",
+    "type": "sm:spritesheet",
+    "name": "knuckles"
+  },
+  "diddy_kong": {
+    "folder": ".media/data/spritesheets/diddy_kong",
+    "folder_url": "/media/data/spritesheets/diddy_kong/",
+    "type": "sm:spritesheet",
+    "name": "diddy_kong"
+  },
+  "mario_8bit_modern": {
+    "folder": ".media/data/spritesheets/mario_8bit_modern",
+    "folder_url": "/media/data/spritesheets/mario_8bit_modern/",
+    "type": "sm:spritesheet",
+    "name": "mario_8bit_modern"
+  },
+  "hack_phazon": {
+    "folder": ".media/data/spritesheets/hack_phazon",
+    "folder_url": "/media/data/spritesheets/hack_phazon/",
+    "type": "sm:spritesheet",
+    "name": "hack_phazon"
+  },
+  "tallink": {
+    "folder": ".media/data/spritesheets/tallink",
+    "folder_url": "/media/data/spritesheets/tallink/",
+    "type": "sm:spritesheet",
+    "name": "tallink"
+  },
+  "hitbox_helper": {
+    "folder": ".media/data/spritesheets/hitbox_helper",
+    "folder_url": "/media/data/spritesheets/hitbox_helper/",
+    "type": "sm:spritesheet",
+    "name": "hitbox_helper"
+  },
+  "hack_nature": {
+    "folder": ".media/data/spritesheets/hack_nature",
+    "folder_url": "/media/data/spritesheets/hack_nature/",
+    "type": "sm:spritesheet",
+    "name": "hack_nature"
+  },
+  "shaktool": {
+    "folder": ".media/data/spritesheets/shaktool",
+    "folder_url": "/media/data/spritesheets/shaktool/",
+    "type": "sm:spritesheet",
+    "name": "shaktool"
+  },
+  "fusion_green_varia": {
+    "folder": ".media/data/spritesheets/fusion_green_varia",
+    "folder_url": "/media/data/spritesheets/fusion_green_varia/",
+    "type": "sm:spritesheet",
+    "name": "fusion_green_varia"
+  },
+  "master_hand": {
+    "folder": ".media/data/spritesheets/master_hand",
+    "folder_url": "/media/data/spritesheets/master_hand/",
+    "type": "sm:spritesheet",
+    "name": "master_hand"
+  },
+  "luigi": {
+    "folder": ".media/data/spritesheets/luigi",
+    "folder_url": "/media/data/spritesheets/luigi/",
+    "type": "sm:spritesheet",
+    "name": "luigi"
+  },
+  "zero_mission": {
+    "folder": ".media/data/spritesheets/zero_mission",
+    "folder_url": "/media/data/spritesheets/zero_mission/",
+    "type": "sm:spritesheet",
+    "name": "zero_mission"
+  },
+  "hack_ascent": {
+    "folder": ".media/data/spritesheets/hack_ascent",
+    "folder_url": "/media/data/spritesheets/hack_ascent/",
+    "type": "sm:spritesheet",
+    "name": "hack_ascent"
+  },
+  "combat_armor_samus": {
+    "folder": ".media/data/spritesheets/combat_armor_samus",
+    "folder_url": "/media/data/spritesheets/combat_armor_samus/",
+    "type": "sm:spritesheet",
+    "name": "combat_armor_samus"
+  },
+  "trans": {
+    "folder": ".media/data/spritesheets/trans",
+    "folder_url": "/media/data/spritesheets/trans/",
+    "type": "sm:spritesheet",
+    "name": "trans"
+  },
+  "samus": {
+    "folder": ".media/data/spritesheets/samus",
+    "folder_url": "/media/data/spritesheets/samus/",
+    "type": "sm:spritesheet",
+    "name": "samus"
+  },
+  "brad_fang": {
+    "folder": ".media/data/spritesheets/brad_fang",
+    "folder_url": "/media/data/spritesheets/brad_fang/",
+    "type": "sm:spritesheet",
+    "name": "brad_fang"
+  },
+  "earthworm_jim": {
+    "folder": ".media/data/spritesheets/earthworm_jim",
+    "folder_url": "/media/data/spritesheets/earthworm_jim/",
+    "type": "sm:spritesheet",
+    "name": "earthworm_jim"
+  },
+  "metroid": {
+    "folder": ".media/data/spritesheets/metroid",
+    "folder_url": "/media/data/spritesheets/metroid/",
+    "type": "sm:spritesheet",
+    "name": "metroid"
+  },
+  "captain_novolin": {
+    "folder": ".media/data/spritesheets/captain_novolin",
+    "folder_url": "/media/data/spritesheets/captain_novolin/",
+    "type": "sm:spritesheet",
+    "name": "captain_novolin"
+  },
+  "tails": {
+    "folder": ".media/data/spritesheets/tails",
+    "folder_url": "/media/data/spritesheets/tails/",
+    "type": "sm:spritesheet",
+    "name": "tails"
+  },
+  "samus_backwards": {
+    "folder": ".media/data/spritesheets/samus_backwards",
+    "folder_url": "/media/data/spritesheets/samus_backwards/",
+    "type": "sm:spritesheet",
+    "name": "samus_backwards"
+  },
+  "shaktool_jr": {
+    "folder": ".media/data/spritesheets/shaktool_jr",
+    "folder_url": "/media/data/spritesheets/shaktool_jr/",
+    "type": "sm:spritesheet",
+    "name": "shaktool_jr"
+  },
+  "maria_renard": {
+    "folder": ".media/data/spritesheets/maria_renard",
+    "folder_url": "/media/data/spritesheets/maria_renard/",
+    "type": "sm:spritesheet",
+    "name": "maria_renard"
+  },
+  "hack_decision": {
+    "folder": ".media/data/spritesheets/hack_decision",
+    "folder_url": "/media/data/spritesheets/hack_decision/",
+    "type": "sm:spritesheet",
+    "name": "hack_decision"
+  },
+  "marga": {
+    "folder": ".media/data/spritesheets/marga",
+    "folder_url": "/media/data/spritesheets/marga/",
+    "type": "sm:spritesheet",
+    "name": "marga"
+  },
+  "SNES_Controller": {
+    "folder": ".media/data/spritesheets/SNES_Controller",
+    "folder_url": "/media/data/spritesheets/SNES_Controller/",
+    "type": "sm:spritesheet",
+    "name": "SNES_Controller"
+  }
+}

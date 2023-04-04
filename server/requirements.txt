@@ -1,0 +1,4 @@
+Django==4.1.5
+django-unrest==0.1.9
+opencv-python==4.5.5.62
+urcv==0.0.7
