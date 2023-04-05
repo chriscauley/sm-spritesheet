@@ -5,3 +5,4 @@ server/.media
 server/.static
 server/main/.secret_key
 server/main/settings/local.py
+server/dist
