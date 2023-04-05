@@ -1,5 +1,6 @@
 <template>
   <div v-if="spritesheet">
+    <ingest-image />
     <div>
       {{ spritesheet.display }}
       <div class="spritesheet-actions">
@@ -33,6 +34,7 @@ import varia from '@/varia'
 
 import PreviewSprite from './PreviewSprite.vue'
 import LoadingModal from './LoadingModal.vue'
+import IngestImage from '@/components/IngestImage.vue'
 
 const css = {
   swatch: ({ value }) => ({
@@ -45,7 +47,7 @@ const css = {
 export default {
   name: 'EditSprite',
   __route: { path: '/app/edit-sprite/:spritesheet_name' },
-  components: { ColorSwatch, LoadingModal, PreviewSprite },
+  components: { ColorSwatch, IngestImage, LoadingModal, PreviewSprite },
   data() {
     return { css, ready: null, tasks: null }
   },
