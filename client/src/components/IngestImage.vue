@@ -6,8 +6,6 @@
 </template>
 
 <script>
-import { startCase } from 'lodash'
-
 import varia from '@/varia'
 
 export default {
@@ -26,7 +24,6 @@ export default {
       var reader = new FileReader()
       reader.onload = () => {
         this.filename = file.name
-        console.log(this.filename)
         this.data_url = reader.result
       }
       reader.readAsDataURL(file)
@@ -44,16 +41,14 @@ export default {
       const img_data = ctx.getImageData(0, 0, width, height)
       const colors = {}
       const length = img_data.data.length / 4
-      for (let i=0;i<length;i++) {
-        const color = img_data.data.slice(i*4, (i+1)*4)
-        colors[color] = (colors[color] || 0) +1
+      for (let i = 0; i < length; i++) {
+        const color = img_data.data.slice(i * 4, (i + 1) * 4)
+        colors[color] = (colors[color] || 0) + 1
       }
-      varia.skips.forEach(c => {
-        console.log(c, colors[c])
+      varia.skips.forEach((c) => {
         delete colors[c]
       })
-      console.log(colors)
-    }
+    },
   },
 }
 </script>

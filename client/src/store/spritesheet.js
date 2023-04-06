@@ -1,21 +1,18 @@
-import axios from 'axios'
+import { RestStorage } from '@unrest/vue-storage'
 import { startCase } from 'lodash'
-import { reactive } from 'vue'
 
-export default (_store) => {
-  const state = reactive({
-    data: null,
-    get ready() {
-      return !!state.data
-    },
+const fromServer = (spritesheet) => {
+  Object.assign(spritesheet, {
+    folder_url: `/media/data/spritesheets/${spritesheet.name}/`,
+    to: `/app/edit-sprite/${spritesheet.name}`,
+    display: startCase(spritesheet.name),
   })
-  axios.get('/static/sprite_data.json').then(({ data }) => {
-    Object.values(data).map((spritesheet) => {
-      spritesheet.display = startCase(spritesheet.name)
-    })
-    state.data = data
-  })
-  return {
-    state,
-  }
+  return spritesheet
+}
+
+export default () => {
+  const slug = 'schema/spritesheet'
+  const storage = RestStorage(slug, { collection_slug: slug, fromServer })
+  storage.getAll = () => storage.getPage({ query: { per_page: 5000 } })?.items || []
+  return storage
 }

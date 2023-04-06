@@ -11,20 +11,13 @@
 </template>
 
 <script>
-import { startCase } from 'lodash'
-
 export default {
   __route: {
     path: '/app/new-sprite',
   },
   computed: {
     sprites() {
-      const { data } = this.$store.spritesheet.state
-      return Object.values(data || {}).map((sprite) => ({
-        to: `/app/edit-sprite/${sprite.name}`,
-        display: startCase(sprite.name),
-        ...sprite,
-      }))
+      return this.$store.spritesheet.getAll()
     },
   },
   methods: {

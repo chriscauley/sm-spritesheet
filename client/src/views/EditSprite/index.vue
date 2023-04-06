@@ -54,8 +54,8 @@ export default {
   computed: {
     spritesheet() {
       const { spritesheet_name } = this.$route.params
-      const { data } = this.$store.spritesheet.state
-      return data && data[spritesheet_name]
+      const spritesheets = this.$store.spritesheet.getAll()
+      return spritesheets.find((s) => s.name === spritesheet_name)
     },
   },
   methods: {

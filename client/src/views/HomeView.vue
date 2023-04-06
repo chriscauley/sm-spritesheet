@@ -20,7 +20,7 @@ export default {
   },
   data() {
     return {
-      routes: ['/new-sprite/'].map(prepRoute),
+      routes: ['/app/new-sprite/'].map(prepRoute),
     }
   },
 }
