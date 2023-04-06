@@ -1,9 +1,13 @@
+import _setup
+
 import cv2
 import os
 import json
 import urcv
-
 from unrest.utils import JsonCache
+
+from palette.models import Spritesheet
+
 TYPE = 'sm:spritesheet'
 
 def split_spritesheet(source):
@@ -14,9 +18,10 @@ def split_spritesheet(source):
 
     for f in os.listdir(source):
         sprite_name = f.split('/')[-1].split('.')[0]
+        Spritesheet.objects.get_or_create(name=sprite_name)
         dest_dir = os.path.join(DEST, sprite_name)
         if os.path.exists(dest_dir):
-            pass # continue
+            continue
         og_path = os.path.join(source, f)
         image = cv2.imread(og_path, cv2.IMREAD_UNCHANGED)
         os.makedirs(dest_dir, exist_ok=True)
