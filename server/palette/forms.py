@@ -1,31 +1,38 @@
 from django import forms
 import unrest_schema
 
-from palette.models import Palette, Spritesheet, Outfit
-
-def check_owner_by_request(self, instance, user):
-    return instance.user_id == user.id or \
-        instance.session_id == self.request.session.id
-
-class UserOrSessionForm(forms.ModelForm):
-    user_can_GET = check_owner_by_request
-    user_can_PUT = check_owner_by_request
-    user_can_DELETE = check_owner_by_request
-    user_can_POST = True
-    user_can_LIST = True
+from palette.models import Palette, Spritesheet, Outfit, Wardrobe
 
 @unrest_schema.register
-class PalettForm(UserOrSessionForm):
+class PalettForm(forms.ModelForm):
     class Meta:
         model = Palette
         fields = ('name', 'image', 'colors', 'counts')
 
 
+class OwnerForm(forms.ModelForm):
+    user_can_GET = 'OWN'
+    user_can_LIST = 'OWN'
+    user_can_POST = 'OWN'
+    user_can_PUT = 'OWN'
+    user_can_DELETE = None
+    def get_queryset(self, request):
+        return self._meta.model.objects.filter(user=request.user)
+
 @unrest_schema.register
-class OutfitForm(UserOrSessionForm):
+class OutfitForm(OwnerForm):
     class Meta:
         model = Outfit
-        fields = ('name', 'colors', 'spritesheet')
+        fields = ('name', 'colors')
+
+
+@unrest_schema.register
+class WardrobeForm(OwnerForm):
+    filter_fields = ['spritesheet__name']
+    class Meta:
+        model = Wardrobe
+        fields = ('name', 'varia_suit', 'gravity_suit', 'power_suit')
+
 
 @unrest_schema.register
 class SpritesheetForm(forms.ModelForm):

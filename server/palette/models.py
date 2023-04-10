@@ -4,12 +4,14 @@ from django.db import models
 import cv2
 import hashlib
 
-_nullable = dict(blank=True, null=True, on_delete=models.SET_NULL)
-class UserOrSessionModel(models.Model):
-    class Meta:
-        abstract = True
-    session = models.ForeignKey(Session, **_nullable)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, **_nullable)
+
+class Palette(models.Model):
+    name = models.CharField(max_length=128)
+    image = models.ImageField(upload_to="palette_images")
+    colors = models.JSONField(default=list)
+    counts = models.JSONField(default=list)
+    def __str__(self):
+        return self.name
 
 
 class Spritesheet(models.Model):
@@ -20,18 +22,25 @@ class Spritesheet(models.Model):
         return self.name
 
 
-class Palette(UserOrSessionModel):
-    name = models.CharField(max_length=128)
-    image = models.ImageField(upload_to="palette_images")
-    colors = models.JSONField(default=list)
-    counts = models.JSONField(default=list)
-    def __str__(self):
-        return self.name
-
-
-class Outfit(UserOrSessionModel):
+class Outfit(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     name = models.CharField(max_length=128)
     colors = models.JSONField(default=list)
     spritesheet = models.ForeignKey('Spritesheet', on_delete=models.CASCADE)
     def __str__(self):
         return self.name
+
+def OutfitField():
+    return models.ForeignKey(
+        Outfit,
+        related_name='+',
+        on_delete=models.PROTECT
+    )
+
+class Wardrobe(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    name = models.CharField(max_length=128, null=True, blank=True)
+    spritesheet = models.ForeignKey(Spritesheet, on_delete=models.CASCADE)
+    power_suit = OutfitField()
+    varia_suit = OutfitField()
+    gravity_suit = OutfitField()
