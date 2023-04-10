@@ -1,8 +1,9 @@
 import local from './local'
 import app from './app'
 import spritesheet from './spritesheet'
+import wardrobe from './wardrobe'
 
-const modules = { local, app, spritesheet }
+const modules = { local, app, spritesheet, wardrobe }
 
 const store = {
   install(app) {
