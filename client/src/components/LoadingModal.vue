@@ -31,7 +31,7 @@ export default {
         next()
         this.index++
         this.tick()
-      }, 100)
+      }, 0)
     },
     reset() {
       this.index = 0

@@ -87,3 +87,15 @@ img.-full {
     text-align: center;
   }
 }
+
+img.-no-max-width {
+  max-width: none;
+}
+
+.preview-sprite__region {
+  @apply absolute cursor-pointer;
+  background: rgba(255, 0, 0, 0.5);
+  &:hover {
+    background: rgba(255, 255, 0, 0.5);
+  }
+}

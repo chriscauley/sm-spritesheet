@@ -1,5 +1,5 @@
 <template>
-  <div v-if="ready && selected_region">
+  <div v-if="ready && selected_region" class="preview-sprite">
     <div v-if="suits" class="btn-group">
       <button
         v-for="suit in suits"
@@ -17,24 +17,31 @@
     <img :src="region_src" class="-full" />
   </div>
   <div v-show="!selected_region" class="relative">
-    <img ref="img" :src="`${spritesheet.folder_url}spritesheet.png`" @load="imageLoaded" />
+    <img
+      class="-no-max-width"
+      ref="img"
+      :src="`${spritesheet.folder_url}spritesheet.png`"
+      @load="imageLoaded"
+    />
     <div v-for="region in regions" :key="region.id" v-bind="region" @click="selectRegion(region)" />
   </div>
 </template>
 
 <script>
+import { resolveColor, replaceColors, getOverrides } from '@/utils'
 import varia from '@/varia'
-import { replaceColors } from '@/utils'
+import vec4 from '@/vec4'
 
 export default {
   props: {
     spritesheet: Object,
+    wardrobe: Object,
   },
   data() {
     const css = {
       suit: (name) => `btn -${this.selected_suit === name ? 'primary' : 'secondary'}`,
     }
-    return { ready: false, selected_suit: 'power-suit', css }
+    return { ready: false, selected_suit: 'power-suit', css, selected_region: null }
   },
   computed: {
     suits() {
@@ -44,14 +51,10 @@ export default {
       }
       return ['power-suit', 'varia-suit', 'gravity-suit']
     },
-    selected_region() {
-      return this.$store.local.state.selected_region
-    },
     regions() {
       return Object.entries(varia.regions).map(([name, [left, top, width, height]]) => ({
+        class: 'preview-sprite__region',
         style: {
-          position: 'absolute',
-          background: 'rgba(255, 0, 0, 0.5)',
           top: `${top}px`,
           left: `${left}px`,
           width: `${width}px`,
@@ -72,7 +75,7 @@ export default {
       const image_data = ctx.getImageData(0, 0, width, height)
       const { palettes } = this.$store.app.state
       const { id } = this.selected_region
-      const overrides = this.$store.local.getOverrides(id, palettes, this.selected_suit)
+      const overrides = getOverrides(id, palettes, this.selected_suit, this.wardrobe)
       replaceColors(image_data, overrides)
       ctx.putImageData(image_data, 0, 0)
 
@@ -92,7 +95,7 @@ export default {
       this.ready = true
     },
     selectRegion(region) {
-      this.$store.local.save({ selected_region: region })
+      this.selected_region = region
     },
   },
 }
