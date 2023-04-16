@@ -1,3 +1,6 @@
+import varia from '@/varia'
+import vec4 from '@/vec4'
+
 export const extractPalette = (ctx, { x, y, width, height, skips = [] }) => {
   // DEPRECATED: unused funciton, use or delete by March 2023
   const image_data = ctx.getImageData(x, y, width, height)
@@ -63,4 +66,28 @@ export const replaceColors = (image_data, overrides) => {
       image_data.data[4 * index + 3] = color2[3]
     })
   })
+}
+
+export const getOverrides = (region_id, palettes, suit_name, wardrobe) => {
+  const palette_name = varia.special_regions[region_id] || suit_name
+  const palette = palettes.find((p) => p.name === palette_name)
+  const palette_index = palettes.indexOf(palette)
+  const overrides = palette.colors.map((color, index) => {
+    let { value } = color
+    if (palette_index < 4) {
+      // suits and death
+      value = palettes[0].colors[index].value
+    }
+    return [value, resolveColor(color, palettes, wardrobe.data)]
+  })
+  return overrides.filter((o) => !vec4.equal(o[0], o[1]))
+}
+
+export const resolveColor = (color, palettes, overrides) => {
+  const override = overrides[color.id]
+  if (!override && color.locked) {
+    const base_color = palettes[0].colors[color.index]
+    return resolveColor(base_color, palettes, overrides)
+  }
+  return override || color.value
 }

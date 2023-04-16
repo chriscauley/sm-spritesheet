@@ -3,14 +3,13 @@ import { ReactiveLocalStorage } from '@unrest/vue-storage'
 import varia from '@/varia'
 import vec4 from '@/vec4'
 
-const LS_KEY = 'LOCAL_STORE'
+const LS_KEY = 'LOCAL_STORE_v2'
 
 export default () => {
   const initial = {
     data_url: null,
     filename: null,
     overrides: {},
-    selected_region: null,
   }
   const storage = ReactiveLocalStorage({ LS_KEY, initial })
 
@@ -37,5 +36,12 @@ export default () => {
     return overrides.filter((o) => !vec4.equal(o[0], o[1]))
   }
 
+  storage.getCurrentOverrides = (spritesheet_name) => {
+    if (!storage.state.overrides[spritesheet_name]) {
+      storage.state.overrides[spritesheet_name] = {}
+      storage.save()
+    }
+    return storage.staet.overrides
+  }
   return storage
 }

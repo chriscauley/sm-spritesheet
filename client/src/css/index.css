@@ -66,6 +66,14 @@ img.-full {
   }
 }
 
+.color-swatch {
+  @apply relative;
+  &__value {
+    @apply h-8 w-8;
+    background: linear-gradient(135deg, var(--base-color) 50%, var(--selected-color) 50%);
+  }
+}
+
 .loading-modal .modal-content {
 }
 

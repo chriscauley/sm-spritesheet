@@ -7,5 +7,9 @@ export default () => {
   const storage = RestStorage(slug, { collection_slug: slug })
   storage.getAll = (q) => storage.getPage(makeQuery(q))?.items || []
   storage.fetchAll = (q) => storage.fetchPage(makeQuery(q))
+  storage.overrideColor = (wardrobe, color_id, value) => {
+    wardrobe.data[color_id] = value
+    this.$store.wardrobe.save(wardrobe)
+  }
   return storage
 }

@@ -28,9 +28,8 @@
 </template>
 
 <script>
-import { resolveColor, replaceColors, getOverrides } from '@/utils'
+import { replaceColors, getOverrides } from '@/utils'
 import varia from '@/varia'
-import vec4 from '@/vec4'
 
 export default {
   props: {

@@ -1,5 +1,5 @@
 <template>
-  <div>woo</div>
+  <div />
 </template>
 
 <script>
@@ -16,7 +16,7 @@ export default {
   },
   watch: {
     modelValue(newColor) {
-      this.pickr.setColor(newColor)
+      this.pickr && this.pickr.setColor(newColor)
     },
   },
   mounted() {
