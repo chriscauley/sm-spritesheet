@@ -1,7 +1,7 @@
 from django import forms
 import unrest_schema
 
-from palette.models import Palette, Spritesheet, Outfit, Wardrobe
+from palette.models import Palette, Spritesheet, Wardrobe
 
 @unrest_schema.register
 class PalettForm(forms.ModelForm):
@@ -18,13 +18,6 @@ class OwnerForm(forms.ModelForm):
     user_can_DELETE = None
     def get_queryset(self, request):
         return self._meta.model.objects.filter(user=request.user)
-
-@unrest_schema.register
-class OutfitForm(OwnerForm):
-    filter_fields = ['id__in']
-    class Meta:
-        model = Outfit
-        fields = ('name', 'colors')
 
 
 @unrest_schema.register

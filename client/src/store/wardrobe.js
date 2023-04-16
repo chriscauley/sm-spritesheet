@@ -9,7 +9,7 @@ export default () => {
   storage.fetchAll = (q) => storage.fetchPage(makeQuery(q))
   storage.overrideColor = (wardrobe, color_id, value) => {
     wardrobe.data[color_id] = value
-    this.$store.wardrobe.save(wardrobe)
+    storage.save(wardrobe)
   }
   return storage
 }

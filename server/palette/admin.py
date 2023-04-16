@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Spritesheet, Palette, Outfit
+from .models import Spritesheet, Palette
 
 @admin.register(Spritesheet)
 class SpritesheetAdmin(admin.ModelAdmin):
@@ -9,9 +9,4 @@ class SpritesheetAdmin(admin.ModelAdmin):
 
 @admin.register(Palette)
 class PaletteAdmin(admin.ModelAdmin):
-    pass
-
-
-@admin.register(Outfit)
-class OutfitAdmin(admin.ModelAdmin):
     pass
