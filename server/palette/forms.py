@@ -21,6 +21,7 @@ class OwnerForm(forms.ModelForm):
 
 @unrest_schema.register
 class OutfitForm(OwnerForm):
+    filter_fields = ['id__in']
     class Meta:
         model = Outfit
         fields = ('name', 'colors')
@@ -31,7 +32,7 @@ class WardrobeForm(OwnerForm):
     filter_fields = ['spritesheet__name']
     class Meta:
         model = Wardrobe
-        fields = ('name', 'varia_suit', 'gravity_suit', 'power_suit')
+        fields = ('name', 'spritesheet', 'data')
 
 
 @unrest_schema.register

@@ -16,8 +16,5 @@ def new_wardrobe(request, spritesheet_name):
     wardrobe = Wardrobe.objects.create(
         spritesheet=spritesheet,
         user=request.user,
-        power_suit=new_outfit(),
-        varia_suit=new_outfit(),
-        gravity_suit=new_outfit(),
     )
     return JsonResponse({ 'wardrobe_id': wardrobe.id })
