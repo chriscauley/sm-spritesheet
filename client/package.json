@@ -11,13 +11,16 @@
   "dependencies": {
     "@popperjs/core": "^2.11.6",
     "@simonwep/pickr": "^1.8.2",
+    "@unrest/css": "^0.0.8",
     "@unrest/tailwind": "^0.1.22",
     "@unrest/vue": "^0.2.17",
     "@unrest/vue-auth": "^0.0.13",
+    "@unrest/vue-form": "^0.0.19",
     "@unrest/vue-storage": "^0.0.19",
     "core-js": "^3.8.3",
     "postcss-for": "^2.1.1",
     "postcss-simple-vars": "^7.0.1",
+    "url": "^0.11.0",
     "vue": "^3.2.13",
     "vue-router": "^4.0.13"
   },

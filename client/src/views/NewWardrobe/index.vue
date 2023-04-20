@@ -23,6 +23,7 @@ export default {
   components: { WardrobePicker },
   __route: {
     path: '/app/wardrobe/new',
+    meta: { authRequired: true },
   },
   data() {
     return { selected: null }

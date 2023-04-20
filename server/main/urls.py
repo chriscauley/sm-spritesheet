@@ -6,6 +6,7 @@ from palette.views import new_wardrobe
 from palette.forms import *
 
 app_urls = [
+    'auth',
     'app',
     'new-sprite',
     '$',
@@ -15,5 +16,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/new-wardrobe/<str:spritesheet_name>/", new_wardrobe),
     re_path(f'^({"|".join(app_urls)})', index),
+    path('', include('social_django.urls', namespace='social')),
     path('', include('unrest.urls')),
 ]

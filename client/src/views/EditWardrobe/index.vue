@@ -43,6 +43,7 @@ export default {
   components: { ColorSwatch, LoadingModal, PreviewSprite },
   __route: {
     path: '/app/wardrobe/:wardrobe_id',
+    meta: { authRequired: true },
   },
   data() {
     return { tasks: [] }

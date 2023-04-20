@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "social_django",
     "palette",
 ]
 
@@ -119,3 +120,11 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / '../.media'
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+LOGIN_REDIRECT_URL = '/'
+SOCIAL_AUTH_POSTGRES_JSONFIELD = False
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.twitch.TwitchOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
