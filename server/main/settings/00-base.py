@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_registration",
     "social_django",
     "palette",
 ]
@@ -86,21 +87,12 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
-]
+_validators = ["UserAttributeSimilarity", "MinimumLength", "CommonPassword", "NumericPassword"]
 
+AUTH_PASSWORD_VALIDATORS = [
+    { "NAME": f"django.contrib.auth.password_validation.{v}Validator" }
+    for v in _validators
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
@@ -121,10 +113,10 @@ MEDIA_ROOT = BASE_DIR / '../.media'
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-
 LOGIN_REDIRECT_URL = '/'
 SOCIAL_AUTH_POSTGRES_JSONFIELD = False
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.twitch.TwitchOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
+UNREST_ALLOW_GUEST = True

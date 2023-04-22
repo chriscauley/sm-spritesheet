@@ -30,6 +30,8 @@ class WardrobeForm(OwnerForm):
 
 @unrest_schema.register
 class SpritesheetForm(forms.ModelForm):
+    user_can_GET = 'ANY'
+    user_can_LIST = 'ANY'
     class Meta:
         model = Spritesheet
         fields = ('name',)

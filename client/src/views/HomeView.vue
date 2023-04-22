@@ -42,5 +42,17 @@ export default {
       routes: ['/app/wardrobe/new/'].map(prepRoute),
     }
   },
+  methods: {
+    makeGuest() {
+      this.$auth.api
+        .post('auth/guest/')
+        .then(this.$auth.refetch)
+        .then(() => {
+          if (this.$route.query.next) {
+            this.$router.replace(this.$route.query.next)
+          }
+        })
+    },
+  },
 }
 </script>
